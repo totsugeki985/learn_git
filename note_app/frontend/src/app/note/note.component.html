@@ -1,0 +1,53 @@
+<form [formGroup]="notesForm" (ngSubmit)="save()" class="card">
+
+    <div *ngIf = "newNote">
+        <label>Title</label>
+        <input type="text" formControlName="title" [(ngModel)]="note.title" class="form-control"/>
+        <br>
+        <span *ngIf="notesForm.controls?.['title']?.errors?.['maxlength'] && notesForm.controls?.['title']?.touched"><p class = "error">Title limit is 37 characters.</p></span>
+        <span class="error" *ngIf="notesForm.controls?.['title']?.errors?.['required'] && notesForm.controls?.['title']?.touched"><p class="error">Title is required</p></span>
+    </div>
+    <div *ngIf="!newNote" id="title" >
+        <span>{{note.title}}</span>
+        <span *ngIf="note.important" id="important" style="font-weight: bold;">IMPORTANT</span>
+        <hr style="border:solid">
+    </div>
+
+    <div id="dateCreated">
+        {{note.dateCreated | date }}
+    </div>
+    <br>
+
+    <div *ngIf = "newNote">
+        <label class="form-check-label">Important</label>&nbsp;
+        <input id="box" type="checkbox" value="true" formControlName="important" class="form-check-input" [(ngModel)]="note.important"/>
+        <br><br>
+    </div>
+    <!--stuck the !newNote IMPORTANT tag near title as dirty way to not mess up spacing-->
+
+    <div *ngIf = "newNote" id="bodyinput">
+        <label>Body</label><!--<rows="4"-->
+        <textarea formControlName="body" [(ngModel)]="note.body" class="form-control" rows="5"></textarea>
+        <br>
+        <span *ngIf="notesForm.controls?.['body']?.errors?.['required'] && notesForm.controls?.['body']?.touched">
+            <p class = "error">Body is required.</p>
+        </span>        
+    </div>
+    <div *ngIf="!newNote" [ngClass]="{abbreviate: abbreviate == true}" id="bodyText">
+        <p style="white-space: pre-wrap;">{{note.body}}</p>
+    </div>
+
+    <div *ngIf="newNote || editNote" id="saveButton">
+        <button (click)="save()" class="btn btn-primary" 
+        [disabled]="!notesForm.valid">Save</button>
+    </div>
+    <div *ngIf="!newNote && mutable" id="buttons" >
+        <button (click)="updateNote()" class="btn btn-primary">Edit</button>&nbsp;
+        <button (click)="deleteNote()" class="btn btn-primary">Delete</button>
+    </div>
+    
+</form>
+
+<!--<div *ngIf="!newNote" id="important">
+            <div *ngIf="note.important" style="font-weight: bold;">IMPORTANT</div>
+        </div>-->

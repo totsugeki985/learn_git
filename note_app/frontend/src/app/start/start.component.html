@@ -1,0 +1,6 @@
+<div class="buttons"><br><br>
+    <button type="button" class="btn btn-primary" (click)="showLogin()">Login</button> &nbsp; 
+    <button type="button" class="btn btn-primary" (click)="showRegister()">Register</button><br><br>
+</div>
+<app-login *ngIf="selectedComponent == 'login'"></app-login>
+<app-register (registered)="registeredMessage();showLogin()" *ngIf="selectedComponent == 'register'"></app-register>

@@ -1,0 +1,26 @@
+.slider {
+    background-color: plum;
+    margin: auto;
+    height: 350px;
+    width: 900px;
+    transition: ease-in-out;
+    border-radius: 10px;
+}
+
+.no-notes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:22em;
+    font-weight:bold
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    opacity: 0;
+    transition: linear;
+    color:black;
+    background-color: red;
+    text-decoration-color: blue;
+    border-color: chartreuse;
+}

@@ -1,0 +1,40 @@
+<ngb-carousel class='slider' #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+  <ng-template ngbSlide *ngFor="let note of sliderNotes; index as i">
+    <div class="carousel-caption">
+      <h3></h3>
+    </div>
+      <div class="picsum-img-wrapper" style="background-image: url('https://www.creativefabrica.com/wp-content/uploads/2021/06/03/Rawr-Means-I-Love-You-in-Dinosaur-Graphics-12863396-1.jpg');">
+      </div>
+    <br>   
+    <app-note [note]="note" [abbreviate]=true [mutable]=false (click)="selectNote(i)"></app-note>
+  </ng-template>
+  <ng-template ngbSlide *ngIf="sliderNotes.length == 0">
+    <p class="no-notes">You have no important notes to display</p>
+  </ng-template>
+
+</ngb-carousel>
+
+<br>
+    <div *ngFor="let note of notes">
+        <app-note (message)="getRecent();getImportant();relayMessage($event)" [note]="note"></app-note><br>
+    </div> 
+
+<!--<div class="form-check">
+  <input type="checkbox" class="form-check-input" id="pauseOnHover" [(ngModel)]="pauseOnHover">
+  <label class="form-check-label" for="pauseOnHover">Pause on hover</label>
+</div>
+<div class="form-check">
+  <input type="checkbox" class="form-check-input" id="pauseOnFocus" [(ngModel)]="pauseOnFocus">
+  <label class="form-check-label" for="pauseOnFocus">Pause on focus</label>
+</div>
+<div class="form-check">
+  <input type="checkbox" class="form-check-input" id="unpauseOnArrow" [(ngModel)]="unpauseOnArrow">
+  <label class="form-check-label" for="unpauseOnArrow">Unpause when clicking on arrows</label>
+</div>
+<div class="form-check">
+  <input type="checkbox" class="form-check-input" id="pauseOnIndicator" [(ngModel)]="pauseOnIndicator">
+  <label class="form-check-label" for="pauseOnIndicator">Pause when clicking on navigation indicator</label>
+</div>
+<button type="button" (click)="togglePaused()" class="btn btn-outline-dark btn-sm">
+  {{paused ? 'Cycle' : 'Pause' }}
+</button>-->

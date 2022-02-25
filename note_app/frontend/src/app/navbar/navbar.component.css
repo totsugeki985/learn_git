@@ -1,0 +1,72 @@
+.title
+{
+    margin-left:1em;
+    margin-top:2em;
+    color:rgb(66, 28, 71);
+}
+
+.link 
+{
+    color: rgb(71, 9, 19);
+}
+.link:visited {
+    background-color: rgb(250, 220, 121);
+}
+
+.nav-tabs
+{
+    background-color:transparent; /*rgb(255, 250, 238);*/
+    border:transparent;
+    display:flex;
+}
+.nav-tabs:focus {
+
+    background-color: red;
+}
+
+.tab-1
+{
+    background-color:rgb(180, 113, 219);
+    text-align:center;
+    flex-grow:1;
+}
+.tab-1:focus {
+    background-color: red;
+}
+.tab-2
+{
+    background-color:rgb(200, 113, 219);
+    text-align:center;
+    flex-grow:1;
+
+}
+
+.tab-3
+{
+    background-color:rgb(220, 113, 219);
+    text-align:center;
+    flex-grow:1;
+}
+
+.tab-4
+{
+    background-color:rgb(240, 123, 224);
+    text-align:center;
+    flex-grow:1;
+}
+
+.tab-5
+{
+    background-color: rgb(243, 150, 230);
+    text-align:center;
+    flex-grow:1;
+}
+
+.message
+{
+    text-align:right;
+    float: right;
+    margin-right: 2em;
+    margin-top : 1em;
+    color:darkred;
+}

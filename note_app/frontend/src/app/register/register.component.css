@@ -1,0 +1,60 @@
+.register-body
+{
+    margin: auto;
+    width: 30%; 
+    border-radius: 10px;
+    border-width: 1%;
+    border-style: solid;
+    background-color: rgb(247, 236, 247);
+}
+
+#email{
+    padding-top: 3em;
+}
+
+#submitButton
+{
+    padding-bottom: 3em;
+    text-align:center;
+}
+
+.btn-primary{
+    background-color: blueviolet;
+    border-color: blueviolet;
+    color: black;
+}
+
+.btn-primary:hover {
+    color: black;
+    background-color: white;
+
+}
+
+.form-control
+{
+    margin:auto;
+    border: width 50%;
+    border-color:blueviolet;
+}
+
+.form-group
+{
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+/*border-color:red;
+    box-shadow:yellow;*/
+.form-control:focus
+{
+    
+    box-shadow:0 0 2em rgb(243, 150, 230);
+}
+
+
+.error{
+    display: inline-block;
+    width: 85%;
+    position: relative;
+    color: red;
+}

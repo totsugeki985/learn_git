@@ -1,0 +1,43 @@
+<div class = "register-body"> 
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        
+        <div class="form-group">
+            <label id="email">Email:</label><br>
+            <input type="email" class="form-control" formControlName="email"/>
+            <span class="error" *ngIf="registerForm.controls?.['email']?.errors?.['required'] && registerForm.controls?.['email']?.touched">Email is required</span>
+            <span class="error" *ngIf="registerForm.controls?.['email']?.errors?.['email'] && registerForm.controls?.['email']?.touched" >Email format</span><br>
+        </div>
+
+
+        <div class="form-group">
+            <label id="first_name">First Name:</label><br>
+            <input type="text" class="form-control" formControlName="firstName"/>
+            <span class="error" *ngIf="registerForm.controls?.['firstName']?.errors?.['required'] && registerForm.controls?.['firstName']?.touched">First Name is required</span><br>
+        </div>
+    
+        <div class="form-group">
+            <label id="last_name">Last Name:</label><br>
+            <input type="text" class="form-control" formControlName="lastName"/>
+            <span class="error" *ngIf="registerForm.controls?.['lastName']?.errors?.['required'] && registerForm.controls?.['lastName']?.touched">Last Name is required</span><br>
+        </div>
+        
+        <div class="form-group">
+            <label id="password">Password:</label><br>
+            <input type="password" class="form-control" formControlName="password">
+            <span class="error" *ngIf="registerForm.controls?.['password']?.errors?.['required'] && registerForm.controls?.['password']?.touched">Please enter the password, required</span>
+            <span class="error" *ngIf="(registerForm.controls?.['password']?.errors?.['minlength'] && registerForm.controls?.['password']?.touched) || (registerForm.controls?.['password']?.errors?.['pattern'] && registerForm.controls?.['password']?.touched)">Password must be at least 8 characters long, contain a capital letter, a number, and a special character.</span><br>
+        </div>
+
+        <div class="form-group">
+            <label id="cpassword">Confirm Password:</label><br>
+            <input type="password" class="form-control" formControlName="confirmPassword">
+            <span class="error" *ngIf="registerForm.controls?.['confirmPassword'].errors?.['required'] && registerForm.controls?.['confirmPassword']?.touched">Please re-enter password, required</span>
+            <span class="error" *ngIf="registerForm.errors?.['confirmError'] && registerForm.controls?.['confirmPassword']?.touched">Passwords must be the same</span><br>
+        </div>
+
+        <div id="submitButton">
+            <button type="button" (click)="register()" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
+        </div> 
+
+    </form>
+</div>

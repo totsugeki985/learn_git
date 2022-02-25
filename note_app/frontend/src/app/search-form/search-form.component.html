@@ -1,0 +1,18 @@
+<form class="searchForm" [formGroup]="searchForm" (ngSubmit)="searchByDate()">
+    <div class="form-group">
+      <label for="dateCreated">Note's Creation Date</label>
+      <div class="input-group">
+        <input formControlName="dateCreated"  id="dateCreated" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+        </div>
+      </div>
+      <span *ngIf="searchForm.controls?.['dateCreated'].errors?.['dateError'] &&
+      searchForm.controls?.['dateCreated'].touched">Invalid Date</span><br>
+      <button class="btn btn-primary">Search</button>
+    </div>
+  </form>
+<br>
+    <div *ngFor="let note of notes">
+        <app-note (message)="newNotes($event)" [note]="note"></app-note><br>
+    </div> 

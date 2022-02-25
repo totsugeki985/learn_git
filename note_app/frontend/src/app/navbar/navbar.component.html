@@ -1,0 +1,40 @@
+<div class="title">
+  <h1>Notes Keeper<h4 class="message">{{message}}</h4></h1>&nbsp;
+</div>
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeId" class="nav-tabs">
+  <li ngbNavItem='home' class="tab-1">
+    <a ngbNavLink class="link">Home</a>
+    <ng-template ngbNavContent><br>
+      <app-slider (noteSelected)="receiveNotes($event)" (message)="setMessage($event)"></app-slider>
+    </ng-template>
+  </li>
+  <li ngbNavItem='viewANote' hidden=true>
+    <a ngbNavLink class="link">View a Note</a>
+    <ng-template ngbNavContent><br>
+      <app-note (message)="setMessage($event)"[note]="notes[0]"></app-note>
+    </ng-template>
+  </li>
+  <li ngbNavItem class="tab-2">
+    <a ngbNavLink class="link">Create Note</a>
+    <ng-template ngbNavContent><br>
+      <app-note (message)="setMessage($event)" [newNote]=true (noteSelected)="receiveNotes($event)"></app-note>
+    </ng-template>
+  </li>
+  <li ngbNavItem ngbNavItem='viewNotes' class="tab-3">
+    <a ngbNavLink class="link">View Notes</a>
+    <ng-template ngbNavContent><br>
+      <app-home (message)="setMessage($event)"></app-home>
+    </ng-template>
+  </li>
+  <li ngbNavItem class="tab-4">
+  <a ngbNavLink class="link" focus=true >Search by Date</a>
+  <ng-template ngbNavContent><br>
+    <app-search-form (message)="setMessage($event)" (notesFound)="receiveNotes($event)"></app-search-form>
+  </ng-template>
+  </li>
+  <li ngbNavItem class="tab-5">
+    <a ngbNavLink class="link" (click)="logout()">Log Out</a>
+    <ng-template ngbNavContent>Second content</ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>

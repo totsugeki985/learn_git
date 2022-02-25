@@ -1,0 +1,14 @@
+.btn-primary{
+    background-color: blueviolet;
+     border-color: blueviolet;
+     color: black;
+ }
+ .btn-primary:hover {
+    background-color:  rgb(50, 10, 87);
+    border-color: rgb(50, 10, 87);
+    color: white;
+
+}
+.buttons {
+    text-align: center;
+}

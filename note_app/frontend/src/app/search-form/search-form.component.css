@@ -1,0 +1,58 @@
+button.calendar, button.calendar:active {
+    width: 2.75rem;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: center;
+}
+.searchForm{
+  margin: auto;
+  width: 70%;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 2em;
+  padding-bottom: 1.5em;
+  vertical-align: top;
+  border-radius: 10px;
+  border-width: 1%;
+  border-style: solid;
+  border-color: rgb(66, 28, 71);
+  background-color: rgb(247, 236, 247);
+}
+
+.searchForm span
+{
+    color:red
+}
+
+.form-control
+{
+    margin:auto;
+    border: width 50%;
+    border-color:blueviolet;
+}
+
+/*border-color:red;
+    box-shadow:yellow;*/
+.form-control:focus
+{
+    
+    box-shadow:0 0 2em rgb(243, 150, 230);
+}
+
+#buttons{
+    position: relative;
+    margin:5px;
+}
+
+.btn-primary{
+    background-color: blueviolet;
+    border-color: blueviolet;
+    color: black;
+}
+
+.btn-primary:hover {
+    color: black;
+    background-color: white;
+
+}

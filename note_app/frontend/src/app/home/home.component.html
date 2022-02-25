@@ -1,0 +1,12 @@
+<!--<div style="text-align: right;">
+
+    <button (click)="createNote()">Create A New Note</button>
+    <button (click)="getAllNotes()">View All Notes</button> <br>   
+
+</div>-->
+
+
+    <div *ngFor="let note of notes">
+        <app-note (message)="sendMessage($event)" [note]="note"></app-note><br>
+    </div> 
+    
