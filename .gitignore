@@ -1,3 +1,5 @@
 ignore_this_file.txt
 __init__.py
 JenkinsBuild
+note_app/backend/node_modules
+note_app/frontend/node_modules
