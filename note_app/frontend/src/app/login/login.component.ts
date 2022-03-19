@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
     console.log(userData)
     this.userService.login( userData ).subscribe( 
         (data)  => {
-          data = JSON.parse(data) 
-          if (data.msg == "password: true") {
+          if (data.success) {
             console.log(`login sucessful:`, data)
             this.router.navigate( ['home'] )
           }
-          else {
+          else 
+          {
             this.errorService.userError({error: "Failed Login"})
           }
         },

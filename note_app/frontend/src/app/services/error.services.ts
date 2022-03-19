@@ -9,25 +9,25 @@ export class ErrorService {
 
     constructor(private router: Router, private cookieService: CookieService) { }
 
-    handleError(err: any) {
-        
-        if(!err) 
-            return
-        if (err) {
-            console.log('error:', err)
-            console.log('error.error:', err.error)
-            console.log('SKIP')
-            if( err.error == "bad cookie")
-            {
+    handleError( err )
+    {
+        console.log( "handleError: " + err )
+        switch( err )
+        {
+            case "Invalid Cookie":        
                 this.cookieService.delete("Yummy")
                 this.router.navigate( [''] )
                 alert("Your session has expired.\nPlease log in.")
-            }
-            if ( err.error.isTrusted) {
-                alert('The database seems to be unavailable at this time\nPlease try again later')
-            }
+                break;
         }
     }
+
+    backendError( err )
+    {
+        alert("Backend internal server error: " + JSON.stringify(err) )
+        this.router.navigate( [''] )
+    }
+
     userError(err) {
         console.log(err)
         if (!err)

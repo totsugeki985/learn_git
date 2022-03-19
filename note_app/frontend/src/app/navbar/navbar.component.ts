@@ -49,6 +49,7 @@ export class NavbarComponent implements OnInit {
       this.activeId = 'home'
     }
     if ( context.message == 'Note Saved') {
+      console.log( context.notes )
       this.notes = context.notes
       this.activeId = "viewANote"
     }

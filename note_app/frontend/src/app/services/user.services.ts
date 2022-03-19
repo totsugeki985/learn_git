@@ -23,8 +23,8 @@ export class UserService {
     }
 
     login(user: any): Observable<any> {
-        let observale =  this.http.post(this.backendUrl + 'login', user, {withCredentials:true,responseType:"text"})
-        observale.subscribe(data => {
+        let observale =  this.http.post("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_login", user, {withCredentials:true,responseType:"json"})
+        /*observale.subscribe(data => {
             try
             {
                 let userData = JSON.parse(data)
@@ -32,12 +32,12 @@ export class UserService {
             }
             catch( e )
             {}
-        })
+        })*/
         return observale
     }
 
     getName() {
-        return this.userName
+        return "Battousai"//this.userName
     }
 
 

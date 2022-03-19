@@ -41,7 +41,7 @@ export class NoteComponent implements OnInit {
   })
  
  ngOnInit(): void {
-    //this.note.body = this.note.body.replace( '(\s|\n)*$' , '')
+    console.log( "note ngOnInit(): " + JSON.stringify(this.note) )
 }
   save() : void
   {
@@ -49,12 +49,23 @@ export class NoteComponent implements OnInit {
       this.reassignValue()
       console.log( "1" )
       this.service.updateNote(this.note).subscribe(
-        (data)  => { 
-          console.log(`note edited:`, data)
-          this.editNote = false
-          this.newNote = false
-          this.message.emit({message: "Note Updated", notes: []})
-          //this.router.navigate( ['home'] )
+        (data)  => {
+          if( data.success )
+          {
+            this.note._id = data._id
+            console.log(`new note added: `+ JSON.stringify(data) ) 
+            this.editNote = false
+            this.newNote = false
+            this.message.emit({message:"Note Updated", notes: []})
+          }
+          else if( data.failure )
+          {
+            if( data.failure == "Note with that title already exists" )          
+              this.message.emit({message:"Note title already exists.",notes:[]})
+            if( data.failure == "Invalid Cookie" )
+              this.errorService.handleError(data.failure)
+          }
+
         },
         (error) =>
         {
@@ -72,18 +83,27 @@ export class NoteComponent implements OnInit {
       this.service.createNote( this.notesForm.value).subscribe(
         (data)=>
         {
-          this.note._id = data._id
-          console.log(`new note added: `+ JSON.stringify(data) ) 
-          this.editNote = false
-          this.newNote = false
-          this.message.emit({message:"Note Saved", notes: [data]})
+          if( data.success )
+          {
+            this.note._id = data._id
+            console.log(`new note added: `+ JSON.stringify(data) ) 
+            this.editNote = false
+            this.newNote = false
+            this.message.emit({message:"Note Saved", notes: [data.success]})
+          }
+          else if( data.failure )
+          {
+            if( data.failure == "Note with that title already exists" )          
+              this.message.emit({message:"Note title already exists.",notes:[]})
+            if( data.failure == "Invalid Cookie" )
+              this.errorService.handleError(data.failure)
+          }
+
         },
         (error) =>
         {
-          if( this.errorService.saveOrUpdateError(error) )
-            this.message.emit({message:"Note title already exists.",notes:[]})
-        },
-        ()=>{console.log('never happens')}
+          this.errorService.backendError(error)
+        }
       )
     }
 

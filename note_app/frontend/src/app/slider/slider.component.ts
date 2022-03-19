@@ -53,21 +53,37 @@ export class SliderComponent {
   
   getRecent() {
     this.server.getRecentNotes().subscribe(data=>
-    {      
-      this. notes = data
-    },
-    (error) => this.errorService.handleError(error),
-    )        
+      {
+        console.log( "getRecent(): " + JSON.stringify(data) )
+        if( data.success )
+        {
+            console.log( typeof(data.success) )
+            this.notes = data.success
+        }
+        else if( data.failure )
+        {
+          this.errorService.handleError( data.failure )
+        }
+      },
+      (error) => this.errorService.backendError(error)
+      )//end outer subscribe     
   }
   getImportant() {
     this.server.getImportant().subscribe(data=>
     {
-      this.sliderNotes = data
-      console.log(this.notes)
+      console.log( data )
+      if( data.success )
+      {
+          console.log( typeof(data.success) )
+          this.sliderNotes = data.success
+          console.log("slides notes: " + JSON.stringify(this.sliderNotes) )
+      }
+      else if( data.failure )
+      {
+        this.errorService.handleError( data.failure )
+      }
     },
-    (error) => this.errorService.handleError(error),
-       
-    () => console.log("You shouldn't be here")
+    (error) => this.errorService.backendError(error)
     )//end outer subscribe
     
   }

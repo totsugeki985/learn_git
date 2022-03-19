@@ -20,11 +20,12 @@ export class NotesService {
     }
 
     createNote(note: any): Observable<any> {
-        return this.http.post(this.notesUrl, note , {withCredentials:true,responseType:"json"})
+        return this.http.post("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_add_note", note , {withCredentials:true,responseType:"json"})
     }
 
-    updateNote(note:any): Observable<any> {
-        return this.http.patch(this.notesUrl + 'note/' + note._id, note ,{withCredentials:true,responseType:"json"})
+    updateNote(note:any): Observable<any> 
+    {
+        return this.http.patch("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_updateNote", note ,{withCredentials:true,responseType:"json"})
     }
 
     deleteNote(id: string): Observable<any> {
@@ -32,11 +33,11 @@ export class NotesService {
     }
 
     getRecentNotes():Observable<any>{
-        return this.http.get(this.notesUrl+"recent",{withCredentials:true,responseType:"json"})
+        return this.http.get("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_recent",{withCredentials:true,responseType:"json"})
     }
 
     getImportant():Observable<any>{
-        return this.http.get(this.notesUrl+"important",{withCredentials:true,responseType:"json"})
+        return this.http.get("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_important",{withCredentials:true,responseType:"json"})
     }
     //date must be YYYY-MM-DD
 
