@@ -126,11 +126,11 @@ export class NoteComponent implements OnInit {
     this.service.deleteNote( this.note._id ).subscribe(
       data=>
       {
-        console.log(`this got deleted`)
-        this.message.emit({message:"Note Deleted", notes: [this.note._id]})
+        if( data.success ){ this.message.emit({message:"Note Deleted", notes: [this.note._id]}) }
+        else if( data.failure ){ console.log( "failed to delete" + JSON.stringify(data) ) }
         // window.location.reload()
       },
-      (error) => this.errorService.handleError(error),
+      (error) => this.errorService.backendError(error.failure),
       //() => console.log("You shouldn't be here")
       )
   }

@@ -19,7 +19,7 @@ export class UserService {
     }
 
     register(user: any): Observable<any> { 
-        return this.http.post(this.backendUrl + 'register', user, {withCredentials:true,responseType:"text"})
+        return this.http.post("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_register", user, {withCredentials:true,responseType:"json"})
     }
 
     login(user: any): Observable<any> {

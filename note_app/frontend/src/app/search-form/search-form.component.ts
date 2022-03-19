@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import { NotesService } from '../services/notes.services';
+import { ErrorService } from '../services/error.services';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -21,7 +22,7 @@ export class SearchFormComponent implements OnInit {
   notes
 
   constructor( private fb : FormBuilder , private noteService : NotesService , 
-    private router : Router , private cookieService : CookieService ) { }
+    private router : Router , private cookieService : CookieService , private errorService : ErrorService ) { }
 
   ngOnInit(): void {
   } 
@@ -54,18 +55,27 @@ export class SearchFormComponent implements OnInit {
     (
       (data)=>
       {
-        console.log( "search-form:searchByDate():" + JSON.stringify(data) )
-        this.notes = data
-        this.message.emit({ message:`Found ${this.notes.length} notes`, notes: this.notes})
+        if( data['success'] )
+        {
+          console.log( "search-form:searchByDate():" + JSON.stringify(data) )
+          this.notes = data['success']
+          this.message.emit({ message:`Found ${this.notes.length} notes`, notes: this.notes})
+        }
+        else if ( data['failure'] == "Invalid Cookie")
+        {
+          this.cookieService.delete('Yummy')
+          this.router.navigate([''])
+          alert( "Session timed out." )
+        }
+        
       },
       (err)=>
       {
         console.log( "search-form:searchByDate(): err finding notes by date")
         //if bad cookie or database error do something
-        if( err.error == "bad cookie" )
+        if( err )
         {
-          this.cookieService.delete('Yummy')
-          this.router.navigate([''])
+          this.errorService.backendError( err.failure )
         }
       },
       ()=>{/*always executes actually, at end of data*/}

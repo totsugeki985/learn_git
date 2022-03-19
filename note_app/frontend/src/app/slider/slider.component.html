@@ -5,7 +5,11 @@
       <app-note [note]="note" [abbreviate]=true [mutable]=false (click)="selectNote(i)"></app-note>
     </div>
   </ng-template>
-
+  <ng-template ngbSlide *ngIf="sliderNotes.length == 0">
+    <div class="picsum-img-wrapper">
+        <h3 class="margin:auto;">You have no important notes to display!</h3>
+    </div>
+  </ng-template>
 </ngb-carousel>
 
 <br>

@@ -40,10 +40,16 @@ export class RegisterComponent implements OnInit {
     
     this.service.register(data).subscribe(
         (data)  => { 
-          
-          this.registered.emit('')
+          if( data.success )
+          {
+            this.registered.emit('')
+          }
+          else if( data.failure )
+          {
+            this.errorService.registerError(data.failure)
+          }
         },
-        (error) => this.errorService.registerError(error),
+        (error) => this.errorService.backendError(error),
         //() => 
     )
     

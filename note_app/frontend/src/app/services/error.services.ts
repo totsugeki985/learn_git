@@ -43,10 +43,7 @@ export class ErrorService {
 
     registerError(err)
     {
-        if( err && err.error == "false" )
-        {
-            alert("Email already registered.")
-        }
+         alert("Email already registered.")
     }
 
     saveOrUpdateError(err)

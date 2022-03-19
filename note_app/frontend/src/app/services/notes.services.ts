@@ -12,7 +12,7 @@ export class NotesService {
     constructor( private http: HttpClient ) { }
 
     getAllNotes(): Observable<any> {
-        return this.http.get(this.notesUrl, {withCredentials:true,responseType:"json"})
+        return this.http.get("https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_list_notes", {withCredentials:true,responseType:"json"})
     }
     
     getNote(id: string): Observable<any> {
@@ -29,7 +29,16 @@ export class NotesService {
     }
 
     deleteNote(id: string): Observable<any> {
-        return this.http.delete(this.notesUrl + 'note/' + id, {withCredentials:true,responseType:"json"})
+        return this.http.request
+        ( 
+            "DELETE", 
+            "https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_delete", 
+            {
+                withCredentials:true ,
+                responseType:"json",
+                body : { _id : id }
+            } 
+        )
     }
 
     getRecentNotes():Observable<any>{
@@ -43,6 +52,6 @@ export class NotesService {
 
     getByDate( date : string )
     {
-        return this.http.post( this.notesUrl + "date", {dateCreated:date}, {withCredentials:true,responseType:"json"})
+        return this.http.post( "https://pykdhh0xmi.execute-api.us-east-2.amazonaws.com/default/notes_app_getByDate", {dateCreated:date}, {withCredentials:true,responseType:"json"})
     }
 }

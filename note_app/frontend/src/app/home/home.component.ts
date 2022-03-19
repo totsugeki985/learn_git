@@ -25,12 +25,20 @@ export class HomeComponent implements OnInit {
   getAllNotes(){
     console.log("home: in getAllNotes()")
     this.service.getAllNotes().subscribe(data =>{
-      this.notes = data
-      if (this.notes.length == 0) {
+      if( data.success )
+      {
+        this.notes = data.success
+      }
+      else if( data.success.length == 0)
+      {
         this.message.emit({message: 'You have no notes!', notes: []})
       }
+      else
+      {
+        this.errorService.handleError(data.failure)
+      }
     },
-    (error) => this.errorService.handleError(error),
+    (error) => this.errorService.backendError(error.failure),
     () => console.log("You shouldn't be here")
     )
   }
