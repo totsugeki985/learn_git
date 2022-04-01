@@ -1,5 +1,4 @@
 import { Component } from 'react'
-
 import picConf from '../../picConfig.json'
 import css from './Gallery.module.css'
 import Cat from '../cat/Cat'
@@ -26,7 +25,7 @@ class Gallery extends Component
             {
                 if( pics[imgNum] )
                 {
-                    cells.push( <td key={ a + ".png" } className={css.tableData}>{pics[imgNum]}</td>  )
+                    cells.push( <td key={ a + ".png" } className={css.tableData}>{pics[imgNum]}</td> )
                     imgNum++
                 }
             }
@@ -46,7 +45,7 @@ class Gallery extends Component
         for( let a = 0 ; a < picConf.numPics ; a++ )
         {
             //pics.push( Cat( { imgSrc : process.env.PUBLIC_URL+"/pics/"+a+".png" } ) )
-            pics.push( <Cat showOverlay={true} imgSrc={process.env.PUBLIC_URL+"/pics/"+a+".png"} /> )
+            pics.push( <Cat imgSrc={process.env.PUBLIC_URL+"/pics/"+a+".png"} /> )
         }
         return pics
     }

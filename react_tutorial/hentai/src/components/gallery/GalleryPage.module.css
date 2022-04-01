@@ -1,0 +1,19 @@
+.table
+{
+    width : 100%;
+    table-layout: fixed;
+    border-collapse : separate;
+    border-spacing : 20px;
+    /*text-align : center;*/
+}
+
+.tableRow
+{
+
+}
+
+.tableData
+{
+    vertical-align : middle;
+    /*border : 1px solid black;*/
+}

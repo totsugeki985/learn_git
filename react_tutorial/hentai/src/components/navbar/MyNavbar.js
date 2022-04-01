@@ -8,22 +8,14 @@ import Parent from '../upState/Parent'
 
 class MyNavbar extends Component
 {
+    //this.props.tabMap is an object containting key value corresponding to tabName : component
     constructor( props )
     {
         super(props)
-        this.state = { showHome : true , showGallery : false , showMessage : false ,
-                       current : "showHome" }
+        this.tabMapKeys = Object.keys( this.props.tabMap )
+        this.state = { current : this.tabMapKeys[0] } //get string name of first tab to display initially
+        this.navTabs = this.getNavTabs( this.tabMapKeys )
     }
-
-    handleClick(event)
-    {
-        let newShow = "show" + event.target.name
-        let newState = { current : "show" + event.target.name} //set current to the showNAMEOFTAB
-        newState[ newShow ] = true  //change the property showNAME to true
-        newState[ this.state.current] = false  //change the old current to false
-        this.setState( newState )
-    }
-
 
     render()
     {
@@ -32,16 +24,31 @@ class MyNavbar extends Component
                 <Navbar bg="dark" variant="dark">
                         <Navbar.Brand >Navbar</Navbar.Brand>
                         <Nav className="me-auto">
-                            <Nav.Link name="Home" onClick={this.handleClick.bind(this)}>Home</Nav.Link>
-                            <Nav.Link name="Gallery" onClick={this.handleClick.bind(this)}>Gallery</Nav.Link>
-                            <Nav.Link name="Message" onClick={this.handleClick.bind(this)}>Message</Nav.Link>
+                            {this.navTabs}
                         </Nav>
                 </Navbar>
-            { this.state.showGallery ? <Gallery/> : null }
-            { this.state.showMessage ? <Parent/> : null }
+                { this.props.tabMap[ this.state.current] } {/*get the component from tabMap corresponding to its string key in this.state.current*/}
             </div>
         )
     }
+
+    changeTab( tabName , event )
+    {
+        this.setState( { current : tabName } )
+    }    
+
+    getNavTabs( tabNames )
+    {
+        let navTabs = []
+        tabNames.forEach( (tabName)=>
+        {
+            let capitalizedTabName = tabName.charAt(0).toUpperCase() + tabName.slice(1)
+            navTabs.push( <Nav.Link key={tabName} onClick={this.changeTab.bind(this,tabName)}>{capitalizedTabName}</Nav.Link> )
+        })
+        return navTabs
+    }
+
+    
 }
 
 export default MyNavbar
