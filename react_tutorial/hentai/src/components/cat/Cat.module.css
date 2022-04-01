@@ -1,0 +1,12 @@
+.card
+{
+    /*border : 5px double #000;*/
+    margin: 3px , 3px , 3px , 3px
+}
+
+/*resizes based on card size*/
+.cardThumbnail
+{
+    max-width : 100%;
+    max-height : auto;
+}
