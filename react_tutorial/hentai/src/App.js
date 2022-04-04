@@ -4,6 +4,7 @@ import { Component } from 'react'
 import MyNavbar from './components/navbar/MyNavbar'
 import Cat from './components/cat/Cat'
 import Gallery from './components/gallery/Gallery'
+import Test from './components/test/Test'
 
 import Parent from './components/upState/Parent'
 
@@ -18,7 +19,8 @@ class App extends Component
         {
           home : null,
           gallery : <Gallery/>,
-          message : <Parent/>
+          message : <Parent/>,
+          test : <Test/>
         }
     }
 
