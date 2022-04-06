@@ -4,7 +4,7 @@ import { Component } from 'react'
 import MyNavbar from './components/navbar/MyNavbar'
 import Cat from './components/cat/Cat'
 import Gallery from './components/gallery/Gallery'
-import Test from './components/test/Test'
+import PMWindow from './components/test/PMWindow'
 
 import Parent from './components/upState/Parent'
 
@@ -20,7 +20,7 @@ class App extends Component
           home : null,
           gallery : <Gallery/>,
           message : <Parent/>,
-          test : <Test/>
+          PlayerMessage : <PMWindow style="default"/>
         }
     }
 

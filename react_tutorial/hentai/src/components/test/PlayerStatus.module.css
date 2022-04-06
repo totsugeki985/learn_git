@@ -1,0 +1,4 @@
+select#Status option[value="Online"]
+{
+    background-image : url(/pm/status_online.png)
+}
