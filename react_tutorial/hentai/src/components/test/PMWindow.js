@@ -2,6 +2,7 @@ import { Component } from "react";
 import css from "./PMWindow.module.css"
 import PlayerListItem from "./PlayerListItem"
 import PlayerStatus from "./PlayerStatus"
+import PMButton from "./PMButton"
 import ConditionalWrapper from "../utils/ConditionalWrapper"
 import wrapper from "../utils/Wrapper.js"
 
@@ -42,8 +43,18 @@ class Test extends Component
                         <div className={[css.defaultPlayerList,css.defaultScroll,css.transDarkBlueBg].join( ' ')}>
                             <ul className={css.removeBulletAndIndent}>{this.getPlayerList()}</ul>
                         </div>
-                    </div>    
-                    <PlayerStatus style="default"></PlayerStatus>                
+                    </div>
+                    <div className={css.transLightBlueBg} style={{ height : "40px"}}>
+                        <div> 
+                            <PlayerStatus style="default"></PlayerStatus>
+                        </div> 
+                        <div className={css.defaultButtons}>
+                            <PMButton/>
+                            <PMButton/>
+                            <PMButton/>
+                        </div>
+                    </div>   
+                    
                 </div> )
             case "vplusblue" : 
                 return (

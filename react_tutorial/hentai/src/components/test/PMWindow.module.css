@@ -2,7 +2,7 @@
 {
     /*create the pm style border*/
     width : 204px;
-    height : 533px;
+    height : 529px;
     border-style : solid;
     border-width : 28px 8px 8px 8px;
     border-image-source: url(/public/pm/pm_whole_transparent_middle.png);
@@ -13,12 +13,20 @@
 .defaultWindow
 {
     width : 204px;
-    height : 533px;
+    height : 529px;
     border-style : solid;
     border-width: 24px 6px 6px 6px;
     border-image-source : url(/public/pm/default_style/outer_border.png);
     border-image-slice: 24 6 6 6;
     border-image-repeat: stretch;
+}
+
+.defaultButtons
+{
+    height : fit-content;
+    position : relative;
+    top : -8px;
+    left : -1px;
 }
 
 .defaultInnerBorder
@@ -108,10 +116,6 @@
     margin-right : 3px;
 }
 
-.defaultListItems
-{
-
-}
 
 .removeBulletAndIndent
 {
