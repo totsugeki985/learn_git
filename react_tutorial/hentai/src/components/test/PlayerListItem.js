@@ -13,24 +13,26 @@ class PlayerListItem extends Component
     getHighlight()
     {
         let style = { backgroundColor : "transparent" }
-        if( this.props.isActive )
+        if( this.props.isActive  )
         {
            style.backgroundColor = this.backgroundColors.blue
         }
         return style
     }
 
-    makeActive(event)
+    handleOnClick(event)
     {
-        this.props.makeActive(this.props.acct)
+        this.props.leftClicked(this._reactInternals.index)
     }
+
 
     render()
     {
         let listComp = <span>{this.props.nick}</span>
         return (
-        <li onClick={this.makeActive.bind(this)} style={this.getHighlight()} >
+        <li onClick={this.handleOnClick.bind(this)} className={css.toolTip} style={this.getHighlight()} >
             <img src={this.props.headIcon} className={css.headIcon}/>{listComp}
+            <span className={css.toolTipText}>Account: {this.props.acct}<br></br>Level: {this.props.level}</span>
         </li>
         )
     }

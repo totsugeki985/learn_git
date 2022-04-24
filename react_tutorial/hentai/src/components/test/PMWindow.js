@@ -3,8 +3,7 @@ import css from "./PMWindow.module.css"
 import PlayerListItem from "./PlayerListItem"
 import PlayerStatus from "./PlayerStatus"
 import PMButton from "./PMButton"
-import ConditionalWrapper from "../utils/ConditionalWrapper"
-import wrapper from "../utils/Wrapper.js"
+import DataFetcher from '../utils/DataFetcher'
 
 class Test extends Component
 {
@@ -12,13 +11,14 @@ class Test extends Component
     {
         super(props)
         this.imgFolder = process.env.PUBLIC_URL + "/pm/"
-        this.state = { activePlayer : "" , playerCount : 0 , players : [] }
+        this.state = { activePlayer : -1 , playerCount : 0 , players : [] }
+        this.df = new DataFetcher(this)
     }
 
     componentDidMount()
     {
-        this.getPlayerList()
-        this.intervalID = setInterval( this.getPlayerList.bind(this) , 5000 )
+        this.df.getPlayerList()
+        //this.intervalID = setInterval( ()=>{this.df.getPlayerList()} , 5000 )
     }
 
     componentWillUnmount()
@@ -26,39 +26,25 @@ class Test extends Component
         clearInterval( this.intervalID )
     }
 
-    async getPlayerList( )
-    {
-        fetch("http://54.39.121.196:8000/api/players")
-        .then( res => res.json() )
-        .then( data =>
-        {
-            console.log(data)
-            this.setState( { playerCount : data.playerCount , players : data.players } )
-        })
-    }
-
     createPlayerList()
     {
-        console.log("creating playerlist")
         let listComponents = []
         for( let a = 0 ; a < this.state.players.length ; a++ )
         {
-            const  isActive = (this.state.activePlayer==this.state.players[a]) ? true : false
+            const isActive = a == this.state.activePlayer ? true : false
             listComponents.push( 
                 <PlayerListItem key={a} 
+                    isActive={isActive}
                     headIcon={process.env.PUBLIC_URL + "/pm/graal_head.png"} 
                     acct={this.state.players[a].account} 
                     nick={this.state.players[a].communityname}
                     level={this.state.players[a].level}
-                    isActive={isActive} 
-                    makeActive={this.changeActiveListItem.bind(this)}/> 
+                    leftClicked={this.setActivePlayer.bind(this)}/> 
             )
         }
-        console.log( listComponents )
         return listComponents
     }
 
-    createPlayerListComponent(){ return <ul className={css.playerList}>{this.createPlayerList()}</ul> }
 
     createWindowByStyle()
     {
@@ -88,16 +74,13 @@ class Test extends Component
                     
                 </div> )
             case "vplusblue" : 
-                return (
-                <div className={[css.vplusblueWindow , css.fixCursor ].join( ' ' )}>
-                    {this.createPlayerListComponent()}
-                </div> ) 
+                return <p>not implemented</p>
         }
     }    
 
-    changeActiveListItem( acct )
+    setActivePlayer( index )
     {
-        this.setState( { activePlayer : acct} )
+        this.setState( { activePlayer : index } )
     }
     
     render()
