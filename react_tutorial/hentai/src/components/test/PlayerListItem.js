@@ -27,7 +27,7 @@ class PlayerListItem extends Component
 
     render()
     {
-        let listComp = <span>{this.props.acct}</span>
+        let listComp = <span>{this.props.nick}</span>
         return (
         <li onClick={this.makeActive.bind(this)} style={this.getHighlight()} >
             <img src={this.props.headIcon} className={css.headIcon}/>{listComp}

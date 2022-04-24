@@ -24,6 +24,7 @@
 .defaultButtons
 {
     height : fit-content;
+    width : calc( 100% + 1em);
     position : relative;
     top : -8px;
     left : -1px;

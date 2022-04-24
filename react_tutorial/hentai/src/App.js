@@ -9,6 +9,7 @@ import PMWindow from './components/test/PMWindow'
 import Parent from './components/upState/Parent'
 
 let background = process.env.PUBLIC_URL + '/backgrounds/strawberry.jpeg'
+let background2 = "/backgrounds/skulls.jpg"
 
 class App extends Component
 {
@@ -27,7 +28,7 @@ class App extends Component
     render() 
   {
     return (
-      <div className="App" style={ {backgroundImage : 'url(' + background + ')'} }>
+      <div className="App" > {/*style={ {backgroundImage : 'url(' + background2 + ')'} }>*/}
         <MyNavbar tabMap={this.tabMap}/>
       </div>
     );

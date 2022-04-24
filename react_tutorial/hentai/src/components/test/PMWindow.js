@@ -12,24 +12,55 @@ class Test extends Component
     {
         super(props)
         this.imgFolder = process.env.PUBLIC_URL + "/pm/"
-        this.state = { activePlayer : "" }
+        this.state = { activePlayer : "" , playerCount : 0 , players : [] }
     }
 
-    getPlayerList()
+    componentDidMount()
     {
-        let players = []
-        for( let a = 0 ; a < 35 ; a++ )
-        {
-            let isActive = (this.state.activePlayer=="Graal"+a) ? true : false
-            players.push( <PlayerListItem key={a} headIcon={process.env.PUBLIC_URL + "/pm/graal_head.png"} acct={"Graal"+a} nick={"Graal"+a}
-                          isActive={isActive} makeActive={this.changeActiveListItem.bind(this)}/> )
-        }
-        return players
+        this.getPlayerList()
+        this.intervalID = setInterval( this.getPlayerList.bind(this) , 5000 )
     }
 
-    getPlayerListComponent(){ return <ul className={css.playerList}>{this.getPlayerList()}</ul> }
+    componentWillUnmount()
+    {
+        clearInterval( this.intervalID )
+    }
 
-    getWindowByStyle()
+    async getPlayerList( )
+    {
+        fetch("http://54.39.121.196:8000/api/players")
+        .then( res => res.json() )
+        .then( data =>
+        {
+            console.log(data)
+            this.setState( { playerCount : data.playerCount , players : data.players } )
+        })
+    }
+
+    createPlayerList()
+    {
+        console.log("creating playerlist")
+        let listComponents = []
+        for( let a = 0 ; a < this.state.players.length ; a++ )
+        {
+            const  isActive = (this.state.activePlayer==this.state.players[a]) ? true : false
+            listComponents.push( 
+                <PlayerListItem key={a} 
+                    headIcon={process.env.PUBLIC_URL + "/pm/graal_head.png"} 
+                    acct={this.state.players[a].account} 
+                    nick={this.state.players[a].communityname}
+                    level={this.state.players[a].level}
+                    isActive={isActive} 
+                    makeActive={this.changeActiveListItem.bind(this)}/> 
+            )
+        }
+        console.log( listComponents )
+        return listComponents
+    }
+
+    createPlayerListComponent(){ return <ul className={css.playerList}>{this.createPlayerList()}</ul> }
+
+    createWindowByStyle()
     {
         switch( this.props.style )
         {
@@ -41,7 +72,7 @@ class Test extends Component
                     </div>
                     <div className={css.defaultInnerBorder}>
                         <div className={[css.defaultPlayerList,css.defaultScroll,css.transDarkBlueBg].join( ' ')}>
-                            <ul className={css.removeBulletAndIndent}>{this.getPlayerList()}</ul>
+                            <ul className={css.removeBulletAndIndent}>{this.createPlayerList()}</ul>
                         </div>
                     </div>
                     <div className={css.transLightBlueBg} style={{ height : "40px"}}>
@@ -49,9 +80,9 @@ class Test extends Component
                             <PlayerStatus style="default"></PlayerStatus>
                         </div> 
                         <div className={css.defaultButtons}>
-                            <PMButton/>
-                            <PMButton/>
-                            <PMButton/>
+                            <PMButton text="Profile" width="64px"/>
+                            <PMButton text="Mass" width="64px"/>
+                            <PMButton text="Options" width="65px"/>
                         </div>
                     </div>   
                     
@@ -59,7 +90,7 @@ class Test extends Component
             case "vplusblue" : 
                 return (
                 <div className={[css.vplusblueWindow , css.fixCursor ].join( ' ' )}>
-                    {this.getPlayerListComponent()}
+                    {this.createPlayerListComponent()}
                 </div> ) 
         }
     }    
@@ -71,7 +102,7 @@ class Test extends Component
     
     render()
     {
-        return this.getWindowByStyle()
+        return this.createWindowByStyle()
     }
 }
 
