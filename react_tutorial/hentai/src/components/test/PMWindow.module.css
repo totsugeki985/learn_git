@@ -1,3 +1,12 @@
+.handle
+{
+    display : inline-block;
+    position : relative;
+    bottom : -28px;
+    height : 20px;
+    width : 204px;
+}
+
 .vplusblueWindow
 {
     /*create the pm style border*/
@@ -10,6 +19,14 @@
     border-image-repeat: repeat;
 }
 
+/*width : 204px;
+    height : 529px;
+    border-style : solid;
+    border-width: 24px 6px 6px 6px;
+    border-image-source : url(/public/pm/default_style/outer_border.png);
+    border-image-slice: 24 6 6 6;
+    border-image-repeat: stretch;
+    */
 .defaultWindow
 {
     width : 204px;
@@ -24,7 +41,7 @@
 .defaultButtons
 {
     height : fit-content;
-    width : calc( 100% + 1em);
+    width : calc( 100% + 1em); /*so the options buttons doesnt go to the next line*/
     position : relative;
     top : -8px;
     left : -1px;
@@ -50,12 +67,14 @@
 
 .defaultScroll::-webkit-scrollbar
 {
+    height : 10px;
+    max-height: 10px;
     width : 15px; 
 }
 
 .defaultScroll::-webkit-scrollbar-button:vertical:start:decrement
 {
-    background : url(/public/pm/default_style/scroll_arrow_up.jpg);
+    background : url(/public/pm/default_style/scroll_arrow_up.png);
     background-repeat : no-repeat;
     /*display:block allows setting width/height of button*/
     display : block;
@@ -66,12 +85,12 @@
 
 .defaultScroll::-webkit-scrollbar-button:vertical:end:increment
 {
-    background : url(/public/pm/default_style/scroll_arrow_down.jpg);
+    background : url(/public/pm/default_style/scroll_arrow_down.png);
     background-repeat : no-repeat;
     /*display:block allows setting width/height of button*/
     display : block;
-    width : 14px;
-    height : 16px;
+    width : 15px;
+    height : 17px;
 }
 
 .defaultScroll::-webkit-scrollbar-track
@@ -89,6 +108,9 @@
     background : url(/public/pm/default_style/scroll_button.png);
     background-size : 14px 100%;
     background-repeat : no-repeat;
+    /*hack to move track 1px right*/
+    /*background-clip: padding-box;
+    border-left: .5px solid transparent;*/
 }
 
 .transLightBlueBg

@@ -22,7 +22,7 @@ class PlayerListItem extends Component
 
     handleOnClick(event)
     {
-        this.props.leftClicked(this._reactInternals.index)
+        this.props.leftClicked( this._reactInternals.index , event)
     }
 
 
