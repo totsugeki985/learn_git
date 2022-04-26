@@ -11,6 +11,8 @@ import Parent from './components/upState/Parent'
 let background = process.env.PUBLIC_URL + '/backgrounds/strawberry.jpeg'
 let background2 = "/backgrounds/skulls.jpg"
 
+/*
+            <PMWindow style="default"/>*/
 class App extends Component
 {
   constructor( props )
@@ -21,7 +23,11 @@ class App extends Component
           home : null,
           gallery : <Gallery/>,
           message : <Parent/>,
-          PlayerMessage : <PMWindow style="default"/>
+          PlayerMessage : <div>
+            <PMWindow style="default"/>
+            <p style={{textAlign:"left"}}>ALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXT</p>
+            <p style={{textAlign:"left"}}>ALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXTALOT OF TEXT</p>
+          </div>
         }
     }
 

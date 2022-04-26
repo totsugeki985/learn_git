@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React , { Component } from "react";
 import css from "./PMWindow.module.css"
 import PlayerListItem from "./PlayerListItem"
 import PlayerStatus from "./PlayerStatus"
@@ -6,6 +6,7 @@ import PMButton from "./PMButton"
 import PMTab from "./PMTab"
 import DataFetcher from '../utils/DataFetcher'
 import Draggable from 'react-draggable'
+import { toHaveDescription } from "@testing-library/jest-dom/dist/matchers";
 
 class Test extends Component
 {
@@ -13,19 +14,24 @@ class Test extends Component
     {
         super(props)
         this.imgFolder = process.env.PUBLIC_URL + "/pm/"
-        this.state = { selectedPlayers : new Map() , playerCount : 0 , players : [] }
+        this.state = { visible : true , selectedPlayers : new Map() , playerCount : 0 , players : [] }
         this.df = new DataFetcher(this)
+
     }
 
     componentDidMount()
     {
+        
         this.df.getPlayerList()
-        //this.intervalID = setInterval( ()=>{this.df.getPlayerList()} , 5000 )
+        this.intervalID = setInterval( ()=>{this.df.getPlayerList()} , 5000 )
+        window.addEventListener( "keydown" , this.handleKeyDown.bind(this) )
     }
+
 
     componentWillUnmount()
     {
         clearInterval( this.intervalID )
+        window.removeEventListener( "keydown" , this.handleKeyDown.bind(this))
     }
 
     isPlayerSelected( index )
@@ -162,16 +168,31 @@ class Test extends Component
         this.setState( { selectedPlayers : newSelectedPlayers } )
     }
     
+    handleKeyDown( event )
+    {
+        if( event.key == "7" )
+        {
+            this.setState( { visible : !this.state.visible} )
+        }
+    }
+
     render()
     {
-        return (
-            <Draggable handle="#handle">
-                <div>
-                    <span id="handle" className={css.handle}></span>
-                    {this.createWindowByStyle()}
-                </div>
-            </Draggable>
-        )
+        let style = { position:"fixed" , zIndex:"2" }
+        if( ! this.state.visible )
+        {
+            style["visibility"] = "hidden"
+        }
+        let window = 
+            <div style={style}>
+                <Draggable handle="#handle" >
+                    <div>
+                        <span id="handle" className={css.handle}></span>
+                        {this.createWindowByStyle()}
+                    </div>
+                </Draggable>
+            </div>
+        return window
     }
 }
 
