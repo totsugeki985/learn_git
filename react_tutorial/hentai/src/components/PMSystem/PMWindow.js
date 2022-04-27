@@ -1,9 +1,10 @@
 import React , { Component } from "react";
 import css from "./PMWindow.module.css"
-import PlayerListItem from "./PlayerListItem"
-import PlayerStatus from "./PlayerStatus"
+import { PlayerListItem , PlayerListItem2 } from "./PlayerListItem"
+import { PlayerStatus , PlayerStatus2 } from "./PlayerStatus"
 import PMButton from "./PMButton"
-import PMTab from "./PMTab"
+import { PMTab , PMTab2 } from "./PMTab"
+//import PMTab2 from "./PMTab"
 import DataFetcher from '../utils/DataFetcher'
 import Draggable from 'react-draggable'
 import { toHaveDescription } from "@testing-library/jest-dom/dist/matchers";
@@ -38,7 +39,7 @@ class Test extends Component
     {
         //console.log( "isPlayerSelected()" )
         //console.log( this.state.selectedPlayers.get(index.toString()) )
-        if( this.state.selectedPlayers.has(index.toString()) )
+        if( this.state.selectedPlayers.has(index) )
         {
             //console.log("index="+index+",true")
             return true
@@ -50,16 +51,20 @@ class Test extends Component
     {
         //console.log( "createPlayerList():" )
         //console.log( this.state.selectedPlayers )
-
+        let index = 0
         let listComponents = []
         listComponents.push(
-            <PlayerListItem key="Staff"
+            <PlayerListItem 
+                key="Staff"
+                index={index++}
                 icon={process.env.PUBLIC_URL + "/pm/yellow_arrow_down.png"}
                 isLabel={true}
                 labelText="Staff"/>
         )
         listComponents.push(
-            <PlayerListItem key="Buddies"
+            <PlayerListItem 
+                key="Buddies"
+                index={index++}
                 icon={process.env.PUBLIC_URL + "/pm/yellow_arrow_down.png"}
                 isLabel={true}
                 labelText="Buddies"/>
@@ -67,17 +72,21 @@ class Test extends Component
 
         //guildmates
         listComponents.push(
-            <PlayerListItem key="Players"
+            <PlayerListItem 
+                key="Players"
+                index={index++}
                 icon={process.env.PUBLIC_URL + "/pm/yellow_arrow_down.png"}
                 isLabel={true}
                 labelText="Players"/>
         )
         //console.log( "createPlayerList()")
         //console.log( this.state.selectedPlayers )
-        for( let a = 0 ; a < this.state.players.length ; a++ )
+        for( let a = index ; a < this.state.players.length ; a++ )
         {
             listComponents.push( 
-                <PlayerListItem key={a} 
+                <PlayerListItem
+                    key={a} 
+                    index={index++}
                     isActive={this.isPlayerSelected(a)}
                     icon={process.env.PUBLIC_URL + "/pm/graal_head.png"} 
                     acct={this.state.players[a].account} 
@@ -101,7 +110,7 @@ class Test extends Component
                 <div className={[ css.defaultWindow , css.fixCursor ].join( ' ' )}>
                     <span className={[css.lightBlueFont,css.defaultPlayerCountText].join(" ")}>{"Players:"+this.state.playerCount+" online"}</span>
                     <div className={css.transLightBlueBg} style={{height:"20px",marginBottom:"-1px"}}>
-                        <PMTab pmColors={["blue","yellow"]}></PMTab>
+                        <PMTab2 pmColors={["blue","yellow"]}></PMTab2>
                         {/*<img style={{margin:"-8px 0px 0px -1px"}} src={"/pm/default_style/tab.png"}/>*/}
                     </div>
                     <div className={[css.defaultInnerBorder,css.defaultPlayerList,css.defaultScroll,css.transDarkBlueBg].join( ' ')}>
@@ -109,7 +118,7 @@ class Test extends Component
                     </div>
                     <div className={css.transLightBlueBg} style={{ height : "32px"}}>
                         <div className={css.defaultPlayerStatus}> 
-                            <PlayerStatus style="default"></PlayerStatus>
+                            <PlayerStatus2 style="default"></PlayerStatus2>
                         </div> 
                         <div className={css.defaultButtons}>
                             <PMButton text="Profile" width="64px"/>
@@ -126,9 +135,10 @@ class Test extends Component
 
     setselectedPlayers( index , event )
     {
+         //dont feel like looking through the int/string to see where it gets changed
         //console.log( "shift:" + event.shiftKey)
         //console.log( "size:" + this.state.selectedPlayers.size )
-
+        index = parseInt(index)
         let newSelectedPlayers = new Map()
 
         if( event.ctrlKey )//if ctrl pressed, add the 1 player selected to the already selected players
@@ -144,27 +154,36 @@ class Test extends Component
         else if( event.shiftKey && this.state.selectedPlayers.size > 0)//if shift pressed, get starting index of selected players and highlight the rest up to the last player clicked
         {
             let startIndex = this.state.selectedPlayers.keys().next().value
-            //console.log( "startIndex: " + startIndex )
-            //console.log( "index: " + index )
+            console.log( "startIndex: " + startIndex )
+            console.log( "index: " + index )
             //this if else controls whether to select players if the shift click was above/below the startIndex
             if( startIndex < index )
+            {
+                console.log("start index less")
                 for( let a = startIndex; a <= index; a++ )
                 {
-                    newSelectedPlayers.set(a.toString(),true)
+                    newSelectedPlayers.set(a,true)
                 }
+            }
             else
+            {
+                console.log("start index greate ")
                 for( let a = index; a <= startIndex; a++ )
                 {
-                    newSelectedPlayers.set(a.toString(),true)
+                    console.log( "added" + a)
+                    newSelectedPlayers.set(a,true)
                 }
+            }
             //console.log( newSelectedPlayers )
         }
         else //neither ctrl nor shift was pressed, add a single player to map
         {
             newSelectedPlayers.set( index , true )
+            console.log( "added single player to selected" + index )
         }
 
-        //console.log( newSelectedPlayers )
+        
+        console.log( newSelectedPlayers )
         this.setState( { selectedPlayers : newSelectedPlayers } )
     }
     
