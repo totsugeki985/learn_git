@@ -1,0 +1,50 @@
+.icon
+{
+    vertical-align : middle;
+    margin-right : 3px;
+}
+
+.text
+{
+    font-size : 12px;
+}
+
+.labelText
+{
+    color : white;
+    position : relative;
+    left : 5px;
+}
+
+.lightBlueFont
+{
+    color : #99C1F1;
+}
+
+.toolTipText
+{
+    visibility: hidden;
+    border : 1px solid black;
+    background-color: #ffffe0;
+    font-size : 12px;
+    /* Position the tooltip */
+    display : inline-block;
+    position: fixed;
+    z-index: 1;
+}
+
+.yellowArrow
+{
+    position : relative;
+    left : 2px;
+}
+
+li
+{
+    margin-left : 1px;
+
+}
+
+li:hover .toolTipText {
+    visibility: visible;
+  }

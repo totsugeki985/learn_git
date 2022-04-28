@@ -57,7 +57,7 @@
     height : fit-content;
     width : calc( 100% + 1em); /*so the options buttons doesnt go to the next line*/
     position : relative;
-    top : -9px;
+    top : -3px;
     left : -1px;
 }
 

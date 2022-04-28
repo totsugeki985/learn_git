@@ -1,0 +1,19 @@
+/*<img style={{margin:"-8px 0px 0px -1px"}} src={"/pm/default_style/tab.png"}/>*/
+
+
+.tabClicked
+{
+    background : url(/public/pm/default_style/tab.png);
+    background-repeat : no-repeat;
+    display : inline-block;
+    text-align : center;
+    height : 20px; 
+    width : 51px;
+}
+
+.icon
+{
+    position : relative;
+    top : -3px;
+}
+

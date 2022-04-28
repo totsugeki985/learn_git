@@ -22,6 +22,24 @@ class DataFetcher
             this.fetchingComponent.setState({ playerCount : data.playerCount , players : data.players})
         })
     }
+
+    async getPlayerList2( callback ) 
+    {
+        fetch("http://54.39.121.196:8000/api/players")
+        .then( res=>res.json() )
+        .then( data=>{
+            data.players.forEach( 
+                (player)=>{ 
+                    if( player.communityname == '' ) 
+                        player.communityname = player.account
+                    if( player.account == player.communityname )
+                        player.communityname = "*" + player.communityname
+            })
+            callback( data.playerCount , data.players )
+        })
+    }
+
+
 }
 
 export default DataFetcher

@@ -4,8 +4,8 @@ import { Component } from 'react'
 import MyNavbar from './components/navbar/MyNavbar'
 import Cat from './components/cat/Cat'
 import Gallery from './components/gallery/Gallery'
-import PMWindow from './components/PMSystem/PMWindow'
-import Test from './components/PMSystem/Test'
+import PMWindow from "./components/PMSystem/PMWindow"
+import Test from './components/PMSystemOld/Test'
 
 import Parent from './components/upState/Parent'
 
