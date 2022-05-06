@@ -29,8 +29,9 @@
     font-size : 12px;
     /* Position the tooltip */
     display : inline-block;
-    position: fixed;
-    z-index: 1;
+    position: relative;
+    width : 500px;
+    z-index: 999;
 }
 
 .yellowArrow
@@ -42,7 +43,8 @@
 li
 {
     margin-left : 1px;
-
+    overflow-x : hidden;
+    overflow-y : hidden;
 }
 
 li:hover .toolTipText {

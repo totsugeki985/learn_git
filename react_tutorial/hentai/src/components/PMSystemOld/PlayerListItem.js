@@ -83,7 +83,7 @@ function getLabelOrPlayer( props )
     {
         return (
             <li>
-                <img src={ props.icon } className={ [css.icon,css.yellowArrow].join(" ") }/><span className={ [css.text,css.labelText].join(" ") }>{ "---"+props.labelText+"---" }</span>
+                <img src={ props.icon } className={ [css.icon,css.yellowArrow].join(" ") }/><span className={ [css.text,css.labelText].join(" ") }>{ props.labelText+"---" }</span>
             </li>
             )
     }

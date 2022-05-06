@@ -17,6 +17,7 @@ function PMWindow( props )
     const [ selectedPlayers , setSelectedPlayers ] = useState(new Set())
     const [ playerCount , setPlayerCount ] = useState(0)
     const [ players , setPlayers ] = useState([])
+    const bounds = document.documentElement.getBoundingClientRect()
 
     //executes once after first render
     useEffect(()=>{ 
@@ -25,7 +26,7 @@ function PMWindow( props )
             setPlayerCount( playCount )
             setPlayers( playrs )
         }.bind(this)) 
-        /*updateIntervalID.current = setInterval( ()=>
+        updateIntervalID.current = setInterval( ()=>
         {
             df.getPlayerList2( 
             function (playCount,playrs)
@@ -34,26 +35,39 @@ function PMWindow( props )
                 setPlayerCount( playCount )
                 setPlayers( playrs )
             }.bind(this))
-        } , 5000 )*/
-        console.log("adding event listener")
-        window.addEventListener( "keyup" , handleKeyDown.bind(this) )
-        return ()=>{
-            console.log( "removing event listener" )
-            //clearInterval( updateIntervalID.current )
-            window.removeEventListener( "keyup" , handleKeyDown.bind(this))
-        }
+        } , 5000 )
     },[])
 
-    function handleKeyDown( event )
-    {
-        console.log( event )
-        if( event.repeat ){ return }
-        console.log( "7 pressed" )
-        if( event.key == "7" )
-        {
-            console.log( "visible: " + visible )
-            setVisible( !visible )
+    //toggles window visibility when 7 pressed
+    useEffect( ()=>{
+        const handleKeyDown = (event)=>{
+            if( event.repeat ){ return }
+            if( event.key == "7" )
+            {
+                setVisible( !visible )
+            }
         }
+
+        window.addEventListener( "keydown" , handleKeyDown )
+        
+        return ()=>{
+            window.removeEventListener( "keydown" , handleKeyDown )
+        }
+    }, )
+
+    function handleKeyDownOld( event )
+    {
+        console.log( "key down")
+        console.log( event )
+        /*
+        if( event.repeat ){ return }
+        */if( event.key == "7" )
+        {
+            console.log( "7 pressed")
+            //console.log( "visible: " + visible )
+            //setVisible( !visible )
+        }
+        event.stopPropogation()
     }
 
     function createPlayerList()
@@ -86,8 +100,10 @@ function PMWindow( props )
                 index={index++}
                 icon={process.env.PUBLIC_URL + "/pm/yellow_arrow_down.png"}
                 isLabel={true}
-                labelText="Players"/>
+                labelText="PlayersRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWRAWR"/>
         )
+
+        
         //console.log( "createPlayerList()")
         //console.log( this.state.selectedPlayers )
         for( let a = index ; a < players.length ; a++ )
@@ -150,7 +166,7 @@ function PMWindow( props )
 
         if( event.ctrlKey && selectedPlayers.size > 0) //if ctrl pressed, add the 1 player selected to the already selected players
         {
-            console.log( "ctrl key pressed")
+            //console.log( "ctrl key pressed")
             newSelectedPlayers = new Set( selectedPlayers )
             if( newSelectedPlayers.has(index) )
             {
@@ -170,20 +186,20 @@ function PMWindow( props )
                     break
                 }
             }*/
-            console.log( newSelectedPlayers )
-            setSelectedPlayers( newSelectedPlayers )
+            //console.log( newSelectedPlayers )
+            //setSelectedPlayers( newSelectedPlayers )
             //setSelectedPlayers( new Set( [ ...newSelectedPlayers , ...selectedPlayers] )
         }
         else if( event.shiftKey && selectedPlayers.size > 0)//if shift pressed, get starting index of selected players and highlight the rest up to the last player clicked
         {
             newSelectedPlayers = new Set()
             let startIndex = selectedPlayers.values().next().value
-            console.log( "startIndex: " + startIndex )
-            console.log( "index: " + index )
+            //console.log( "startIndex: " + startIndex )
+            //console.log( "index: " + index )
             //this if else controls whether to select players if the shift click was above/below the startIndex
             if( startIndex < index )
             {
-                console.log("start index less")
+                //console.log("start index less")
                 for( let a = startIndex; a <= index; a++ )
                 {
                     newSelectedPlayers.add(a,true)
@@ -191,10 +207,10 @@ function PMWindow( props )
             }
             else
             {
-                console.log("start index greate ")
+                //console.log("start index greate ")
                 for( let a = index; a <= startIndex; a++ )
                 {
-                    console.log( "added" + a)
+                    //console.log( "added" + a)
                     newSelectedPlayers.add(a,true)
                 }
             }
@@ -205,7 +221,7 @@ function PMWindow( props )
         {
             newSelectedPlayers = new Set()
             newSelectedPlayers.add( index , true )
-            console.log( "added single player to selected" + index )
+            //console.log( "added single player to selected" + index )
             setSelectedPlayers( newSelectedPlayers )
         }
     }
@@ -219,7 +235,8 @@ function PMWindow( props )
     
     return(
         <div style={style}>
-            <Draggable handle="#handle" >
+            <Draggable handle="#handle" 
+            bounds={{ left : bounds.left , right : bounds.right - 204 , top : bounds.top , bottom : bounds.bottom }}>
                 <div>
                     <span id="handle" className={css.handle}></span>
                     {createWindowByStyle(props)}
