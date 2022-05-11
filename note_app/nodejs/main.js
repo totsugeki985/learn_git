@@ -9,7 +9,3 @@ async function testDBConnection()
 }
 
 testDBConnection()
-
-test = {}
-test.rawr.pee = "yay"
-console.log( test.rawr.pee )

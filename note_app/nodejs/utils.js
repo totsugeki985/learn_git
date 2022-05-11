@@ -21,12 +21,13 @@ async function cachePEMFile()
 async function connect()
 {
     const creds = { username : "totsugeki985" , password : "porunga1337" } // cloud9 wont reach secretmanager for some reason :[ getSecret( "notes_app_creds" )
-    const conString = "mongodb://" + creds.username + ":" + creds.password + "@greg-mongodb.cr4pgpaysm5v.us-east-2.docdb.amazonaws.com:27017/gregCollection?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false";
-    const mongOpt = { tlsCAFile : "/tmp/" + pemFile };
-    await cachePEMFile()
+    const conString = "mongodb://" + creds.username + ":" + creds.password + "@ec2-3-144-211-93.us-east-2.compute.amazonaws.com:27017/noteApp?authSource=noteAppUsers"
+    //const conString = "mongodb://" + creds.username + ":" + creds.password + "@greg-mongodb.cr4pgpaysm5v.us-east-2.docdb.amazonaws.com:27017/gregCollection?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false";
+    //const mongOpt = { tlsCAFile : "/tmp/" + pemFile };
+    //await cachePEMFile()
     if( mongoose.connection.client == null)
     {
-        await mongoose.connect( conString , mongOpt );
+        await mongoose.connect( conString );//, mongOpt );
     }
     await mongoose.connection.client;
 }
