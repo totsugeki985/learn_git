@@ -1,0 +1,14 @@
+.card
+{
+    /*border : 1px solid black;*/
+    display : inline-block;
+    width : 100px;
+    max-width : 100px;
+    text-align : center;
+    padding : 10px 10px 10px 10px;
+    margin : 10px 10px 10px 10px;
+    background-image : url( "src/assets/graalians/backgrounds/background1.png" );
+    line-height : 5px;
+    color : rgba(173, 27, 27, 0.956);
+    font-weight : bold;
+}

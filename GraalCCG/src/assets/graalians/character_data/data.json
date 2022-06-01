@@ -1,0 +1,22 @@
+[
+    {
+        "account" : "Bloodwork",
+        "communityName" : "Deb",
+        "imagePath" : "assets/graalians/character_images/Deb.png"
+    },
+    {
+        "account" : "Meeka",
+        "communityName" : "Meeka",
+        "imagePath" : "assets/graalians/character_images/Meeka.png"
+    },
+    {
+        "account" : "Ash780",
+        "communityName" : "Battousai",
+        "imagePath" : "assets/graalians/character_images/Battousai.png"
+    },
+    {
+        "account" : "Graal2869548",
+        "communityName" : "TecZin",
+        "imagePath" : "assets/graalians/character_images/TecZin.png"
+    }
+]

@@ -1,0 +1,12 @@
+<table>
+    <tr *ngFor="let row of getGraaliansAsTable(3)">
+      <td *ngFor="let graalian of row">
+        <graalian-card [graalian]="graalian"></graalian-card>
+        <!--<graalian-card [account]="graalian.account" [communityName]="graalian.communityName" [imagePath]="graalian.imagePath"></graalian-card>-->
+      </td>
+    </tr>
+</table>
+
+<p>--------------------------------</p>
+
+<app-test></app-test>

@@ -1,0 +1,53 @@
+CLI commands:
+
+	ng new NameOfNgProject 
+
+		- creates new project
+		
+	ng generate component ComponentName 
+
+		- generates component at path, def is to make folder in src
+		
+	ng serve 
+
+		- serves project at localhost:4200
+		-o - opens in browser
+		
+	-no ng delete/remove after a generate
+	
+	
+Lifecycle Hooks:
+
+	constructor()
+	ngOnChanges() - called when an input value changed, prior to init
+	ngOnInit() - called after constructor, once when component initialized
+	ngDoCheck() - custom change detection
+	ngAfterContentInit()
+	ngAfterContentChecked() - after changes to component values, but before view rendered
+	ngAfterViewInit()
+	ngAfterViewChecked()
+	ngOnDestroy() - derp
+
+	cycles between doCheck, afterContentChecked, afterViewChecked
+	
+View (CSS) Encapsulation
+
+	by default: css styles applied only to component defined in, not parents or children
+	to manipulate:
+	
+	In @Component{
+		encapsulation : ViewEncapsulation.whatever
+	}
+	
+	-apply styles globally : ViewEncapsulation.None
+	-apply styles to child components : ViewEncapsulation.ShadowDom
+	-to remove child from shadow dom: (in child) use ViewEncapsulation.ShadowDOM to establish
+	new css dom root for css
+	-to change one specific css selector: override in child of shadow dom by defining new css
+	
+	
+
+
+
+
+

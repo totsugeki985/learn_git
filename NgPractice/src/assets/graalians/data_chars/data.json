@@ -1,0 +1,17 @@
+[
+    {
+        "account" : "Bloodwork",
+        "communityname" : "Deb",
+        "image" : "app/assets/graalians/images_chars/Deb.png"
+    },
+    {
+        "account" : "Meeka",
+        "communityname" : "Meeka",
+        "image" : "app/assets/graalians/images_chars/Meeka.png"
+    },
+    {
+        "account" : "Ash780",
+        "communityname" : "Battousai",
+        "image" : "app/assets/graalians/images_chars/Battousai.png"
+    }
+]
