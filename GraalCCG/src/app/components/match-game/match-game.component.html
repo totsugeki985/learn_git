@@ -1,0 +1,13 @@
+<table>
+    <tr *ngFor="let row of graalianBoard, index as y">
+      <td *ngFor="let graalian of row, index as x">
+        <graalian-card 
+        [graalian]="graalian" 
+        [key]="numColumns * y + x" 
+        [flipped]="!boardState[y][x].flipped" 
+        [visible]="!boardState[y][x].matched"
+        (clicked)="cardClicked($event)"></graalian-card>
+      </td>
+    </tr>
+</table>
+
