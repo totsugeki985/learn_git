@@ -19,6 +19,9 @@ SPRITE  203            BODY   96    0   32   32 body right
 
 LOOP
 CONTINUOUS
+BACKCOLOR #800000
+SETBACKTO idle.gani
+DEFAULTPARAM1 rawr
 DEFAULTATTR1 hat0.png
 DEFAULTHEAD head19.png
 DEFAULTBODY body.png
@@ -33,5 +36,6 @@ ANI
    0  12  36,   11   6  16,  201  12  16,  101  12   2,   41   0 -16
    0  12  34,  202   8  16,  102   8   2,   42   0 -16,   12   8  24
    0  12  36,   13  34  16,  203   4  16,  103   4   2,   43   0 -16
-WAIT 1
+PLAYSOUND rawr.mp3 4.5625 6.1875
+WAIT 2
 ANIEND
