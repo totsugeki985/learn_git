@@ -1,0 +1,80 @@
+GANI0FP4
+SPRITE     0              SPRITES     0     0    24    12 shadow
+SPRITE    12 advbherv3_bytrello-v3.png    46     2     7    25 sprite
+SPRITE    13     era_wh-colt6.gif    14    87    11    33 sprite
+SPRITE    14 advbherv3_bytrello-v3.png    34     2     7    25 sprite
+SPRITE    15     era_wh-colt6.gif    48    96    11    33 sprite
+SPRITE    16 advbherv3_bytrello-v3.png    35    38     7    25 sprite
+SPRITE    17 advbherv3_bytrello-v3.png   139    47    21    30 sprite
+SPRITE    18 advbherv3_bytrello-v3.png    99    53    30    21 sprite
+SPRITE    19 advbherv3_bytrello-v3.png   223    49    21    30 sprite
+SPRITE    20     era_wh-colt6.gif   125    62    12    12 sprite
+SPRITE    21 advbherv3_bytrello-v3.png    59    77    30    16 sprite
+SPRITE    22 advbherv3_bytrello-v3.png   215     5    30    21 sprite
+SPRITE    23 advbherv3_bytrello-v3.png    17    44    16    30 sprite
+SPRITE    24 advbherv3_bytrello-v3.png   100     3    21    30 sprite
+SPRITE    25 advbherv3_bytrello-v3.png     1    78    30    16 sprite
+SPRITE    26 advbherv3_bytrello-v3.png   175     3    30    21 sprite
+SPRITE    27 advbherv3_bytrello-v3.png    34     2     7    25 sprite
+SPRITE    40                ATTR1     0     0    48    48 hat up
+SPRITE    41                ATTR1    48     0    48    48 hat left
+SPRITE    42                ATTR1    96     0    48    48 hat down
+SPRITE    43                ATTR1   144     0    48    48 hat right
+SPRITE   100                 HEAD     0     0    32    32 head up
+SPRITE   101                 HEAD     0    32    32    32 head left
+SPRITE   102                 HEAD     0    64    32    32 head down
+SPRITE   103                 HEAD     0    96    32    32 head right
+SPRITE   224                 BODY     0   192    32    32 body sword1 up
+SPRITE   233                 BODY    32   256    32    32 body sword3 left
+SPRITE   234                 BODY    64   256    32    32 body sword3 down
+SPRITE   235                 BODY    96   256    32    32 body sword3 right
+
+LOOP
+DEFAULTATTR1 hat0.png
+DEFAULTBODY body.png
+DEFAULTHEAD head19.png
+
+ANI
+    0    12    34,  224     7    14,   16    33     0,  100     8     1,   40     0   -17
+   18     0    15,    0    12    36,  233    10    14,  101    11     2,   41    -1   -16
+    0    12    35,  234     8    14,  102     8     3,   42     0   -15,   12     5    16
+    0    12    36,  235     6    15,  103     5     2,   43     1   -16,   22    12    24
+
+    0    12    34,  224     7    14,   15    35     8,  100     8     2,   40     0   -16
+   20     9    21,    0    12    36,  233    10    14,  101    11     2,   41    -1   -16
+    0    12    35,  234     8    14,  102     8     3,   42     0   -15,   13     7    19
+    0    12    36,  235     6    15,  103     5     2,   43     1   -16,   24    15    24
+PLAYSOUND axe.wav 2.3125 2.5
+
+    0    12    34,  224     7    14,   14    34     8,  100     8     3,   40     0   -15
+   21     7    15,    0    12    36,  233    10    14,  101    12     2,   41     0   -16
+    0    12    35,  234     8    14,  102     8     2,   42     0   -16,   15     6    14
+    0    12    36,  235     6    15,  103     4     2,   43     0   -16,   25     6    31
+
+    0    12    34,  224     7    14,   12    34     6,  100     8     3,   40     0   -15
+    0    12    36,   17     7     8,  233    10    14,  101    12     2,   41     0   -16
+    0    12    35,  234     8    14,  102     8     2,   42     0   -16,   16     5     7
+    0    12    36,  235     6    15,  103     4     2,   43     0   -16,   26     6    27
+
+    0    12    34,  224     7    14,   16    33     0,  100     8     1,   40     0   -17
+   18     1    13,    0    12    36,  233    10    14,  101    11     2,   41    -1   -16
+    0    12    35,  234     8    14,  102     8     3,   42     0   -15,   12     5    16
+    0    12    36,  235     6    15,  103     5     2,   43     1   -16,   22    13    25
+
+    0    12    34,  224     7    14,   27    34     2,  100     8     0,   40     0   -18
+   19     4    11,    0    12    36,  233    10    14,  101    10     2,   41    -2   -16
+    0    12    35,  234     8    14,  102     8     4,   42     0   -14,   14     5    14
+    0    12    36,  235     6    15,  103     6     2,   43     2   -16,   23    19    25
+
+    0    12    34,  224     7    14,   15    35     8,  100     8     2,   40     0   -16
+   20     9    21,    0    12    36,  233    10    14,  101    11     2,   41    -1   -16
+    0    12    35,  234     8    14,  102     8     3,   42     0   -15,   13     7    19
+    0    12    36,  235     6    15,  103     5     2,   43     1   -16,   24    16    25
+PLAYSOUND axe.wav 2.1875 2.6875
+
+    0    12    34,  224     7    14,   12    34     6,  100     8     3,   40     0   -15
+    0    12    36,   17     6     6,  233    10    14,  101    12     2,   41     0   -16
+    0    12    35,  234     8    14,  102     8     2,   42     0   -16,   16     5     7
+    0    12    36,  235     6    15,  103     4     2,   43     0   -16,   26     6    28
+ANIEND
+

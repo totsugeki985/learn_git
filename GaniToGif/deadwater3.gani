@@ -1,0 +1,51 @@
+GANI0001
+SPRITE    0         SPRITES    0    0   24   12 shadow
+SPRITE    1     LETTERS.PNG  240   96   16   32 Question Mark
+SPRITE    2     LETTERS.PNG  224   96   16   32 Exclamation Mark
+SPRITE    3         SPRITES    0  306   32   16 sprite
+SPRITE    4         SPRITES    0  322   32   16 sprite
+SPRITE   40           ATTR1    0    0   48   48 hat up
+SPRITE   41           ATTR1   48    0   48   48 hat left
+SPRITE   42           ATTR1   96    0   48   48 hat down
+SPRITE   43           ATTR1  144    0   48   48 hat right
+SPRITE   44           ATTR1    0   48   48   48 hat pull up
+SPRITE   45           ATTR1   48   48   48   48 hat pull left
+SPRITE   46           ATTR1   96   48   48   48 hat pull down
+SPRITE   47           ATTR1  144   48   48   48 hat pull right
+SPRITE   48           ATTR1    0   96   48   48 hat dead
+SPRITE  100            HEAD    0    0   32   32 head up
+SPRITE  101            HEAD    0   32   32   32 head left
+SPRITE  102            HEAD    0   64   32   32 head down
+SPRITE  103            HEAD    0   96   32   32 head right
+SPRITE  115            HEAD    0  496   32   32 head hurted right
+SPRITE  116            HEAD    0  528   32   32 head dead
+SPRITE  202            BODY   64    0   32   32 body down
+SPRITE  259            BODY   96  448   32   32 body lifting right
+SPRITE  260            BODY    0  480   32   32 body hands up
+SPRITE  261            BODY   32  480   32   32 body hands left
+SPRITE  264            BODY    0  512   32   32 body carrying1 up
+SPRITE  265            BODY   32  512   32   32 body carrying1 left
+SPRITE  266            BODY   64  512   32   32 body carrying1 down
+SPRITE  267            BODY   96  512   32   32 body carrying1 right
+SPRITE  285            BODY   32  672   48   32 body dead
+
+LOOP
+CONTINUOUS
+SINGLEDIRECTION
+DEFAULTATTR1 hat0.png
+DEFAULTHEAD head19.png
+DEFAULTBODY body.png
+
+ANI
+ 285  18  27,  116  39  27,   48  35  14,    3  12  45,    4  39  46
+WAIT 3
+
+ 285  18  26,  116  39  26,   48  35  13,    3  40  45,    4  11  45
+WAIT 3
+
+ 285  18  27,  116  39  27,   48  35  14,    3  13  45,    4  40  45
+WAIT 3
+
+ 285  18  28,  116  39  28,   48  35  15,    4  12  46,    3  40  46
+WAIT 2
+ANIEND
