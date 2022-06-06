@@ -1,1 +1,5 @@
-graal_folder=C:\Users\Christopher Serio\Graal
+graal_folder=E:\Graal
+head=head26.png
+body=shotzo-body.png
+hat=none
+colors=coat:#FF0000,shoes:#FF0000,sleeves:#FF0000,belt:#FFFF00
