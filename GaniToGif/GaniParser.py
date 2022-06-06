@@ -451,7 +451,7 @@ class Animation:
 
 class GaniParser:
 
-    def __init__( self , filename , direction ):
+    def __init__( self , filename ):
     
         with open( filename , "r" ) as file:
             self.content = file.read()
@@ -514,5 +514,5 @@ class GaniParser:
 
     
 
-GaniParser( GANI , sys.argv[2] )
+GaniParser( GANI )
 		
