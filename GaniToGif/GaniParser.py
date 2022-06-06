@@ -1,6 +1,7 @@
 import sys
 import re
-from os import path, linesep
+
+from os import path, linesep, listdir
 from os.path import expanduser
 from PIL import Image, ImageColor
 
@@ -116,7 +117,7 @@ class Utils:
         #print( file_path + " " + str( path.isfile( file_path ) ) )
         
         #check these folders maybe...
-        other_folders = os.listdir( config.levels_folder )
+        other_folders = listdir( config.levels_folder )
         for folder in other_folders:
             file_path = path.join( path.join( config.images_folder , folder ) , file_name )
             
