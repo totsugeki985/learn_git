@@ -104,6 +104,7 @@ class Utils:
     #fuck the images can be in any of the folders.... wtf.  one is a shield - check chidori
     @staticmethod
     def get_image( file_name ):
+        print("----------searching: " + file_name + "------------")
         tokens = file_name.split("_")
         
         if len( tokens ) < 1:
@@ -112,6 +113,7 @@ class Utils:
         file_path = path.join( path.join( config.images_folder , tokens[0] ) , file_name )
         
         if path.isfile( file_path ): #it was in a folder like era/era_bugnet.png
+            print( "found: " + file_path )
             return Image.open( file_path ).convert( "RGBA" )
             
         #print( file_path + " " + str( path.isfile( file_path ) ) )
@@ -122,10 +124,11 @@ class Utils:
             file_path = path.join( path.join( config.images_folder , folder ) , file_name )
             
             if path.isfile( file_path ):
+                print( "found: " + file_path )
                 return Image.open( file_path ).convert( "RGBA" )
            
         #not found at all
-        print( "cant find file_name" )
+        print( "not found: "+ file_name )
         return None
     
     @staticmethod
@@ -245,20 +248,40 @@ class Sprite:
         if self.image is not None:
             return self.image 
         
-        #print( self )        
-        if "." in self.sprite_type:  #is a filename
-            image = Utils.get_image( self.sprite_type )
+        if self.sprite_type == "HEAD":
+            image = Utils.get_image( config.head )
+            print( "sprite_type:" + self.sprite_type + " " + str(image) )
             if image is None:
                 return None
             box = (self.x , self.y , self.x + self.width , self.y + self.height) #left , upper , right , lower
             self.image = image.crop( box )
             return self.image
+        
+        #print( self )        
+        if "." in self.sprite_type:  #is a filename
+            image = Utils.get_image( self.sprite_type )
+            print( "sprite_type:" + self.sprite_type + " " + str(image) )
+            if image is None:
+                return None
+            box = (self.x , self.y , self.x + self.width , self.y + self.height) #left , upper , right , lower
+            self.image = image.crop( box )
+            return self.image
+        
+        #fix this block
+        if "ATTR" in self.sprite_type:
+            image = Utils.get_image( config.hat )
+            if image is None:
+                return None
+            box = (self.x , self.y , self.x + self.width , self.y + self.height) #left , upper , right , lower
+            self.image = image.crop( box )
+            return self.image
+        
             
             
         path_info = DEFAULT_SPRITES.get( self.sprite_type )        
         
         if path_info is None:
-            #print( "sprite type not coded: " + self.sprite_type )
+            print( "sprite type not coded: " + self.sprite_type )
             return None
             
         folder , img_file = path_info
@@ -278,7 +301,8 @@ class Sprite:
                         image = Utils.set_color( self.image , config.default_colors , config.colors )
                 #self.image.save( self.name.replace("\s","_") + "_" + str(self.sprite_index) + ".png" ) #for debugging
                 return self.image
-        except FileNotFoundError:
+        except FileNotFoundError as e:
+            print( e )
             return None
         
     def __str__( self ):

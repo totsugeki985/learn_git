@@ -1,0 +1,5 @@
+graal_folder=C:\Users\Christopher Serio\Graal
+head=head334.png
+body=era_body-2172630_orig.png
+hat=era_ace-hat_piratecrew2.png
+colors=coat:#FAEBD7,shoes:#FAEBD7,sleeves:#FAEBD7,belt:#FAEBD7
