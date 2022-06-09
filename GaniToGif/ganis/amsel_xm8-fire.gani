@@ -156,6 +156,7 @@ SPRITE  347            BODY   20  480   20   32 body hands up
 SPRITE  348            BODY  120  330    8    8 hand right
 
 SETBACKTO amsel_xm8-idle
+DEFAULTPARAM1 rawr
 DEFAULTATTR1 hat0.png
 DEFAULTHEAD head19.png
 DEFAULTBODY body.png

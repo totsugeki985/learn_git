@@ -1,4 +1,0 @@
-graal_folder=C:\Users\Christopher Serio\Graal
-head=era_personal_amber117-test.gif
-body=era_body-amber117-body6.png
-hat=era_hattoken-amber117.gif

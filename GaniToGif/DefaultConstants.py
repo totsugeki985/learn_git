@@ -1,0 +1,6 @@
+HEAD = "head0.png"
+BODY = "body1.png"
+SHIELD = "shield1.png"
+SWORD = "sword1.png"
+ATTR1 = "hat1.png"
+PARAM1 = ""
