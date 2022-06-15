@@ -3,6 +3,7 @@ from Config import Config
 from Sprite import Sprite
 from Animation import Animation
 from Settings import Settings
+from multiprocessing import Process
 
 import sys
 import re
@@ -74,11 +75,15 @@ class GaniParser:
             files_created.append( filename )
         else:
             directions = [ "up" , "left" , "down" , "right" ]
+            processes = []
             for direction in directions:
                 filename = filename + "_" + direction + ".gif" 
-                animation = self.get_animation( direction )
-                animation.save_gif( filename )
                 files_created.append( filename )
+                animation = self.get_animation( direction )
+                process = Process( target=animation.save_gif , args=( filename , ) )
+                process.start()
+            for process in processes:
+                process.join()
         return files_created
 
 if __name__ == "__main__":
