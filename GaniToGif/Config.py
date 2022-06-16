@@ -1,4 +1,5 @@
 from os.path import join, expanduser
+import re 
 
 class Config:
 
