@@ -1,0 +1,4 @@
+graal_folder=E:\Graal
+head=era_personal_amber117-redhead.gif
+body=era_body-amber117-body6.png
+attr1=hat2.png

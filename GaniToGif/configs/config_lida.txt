@@ -1,5 +1,0 @@
-graal_folder=E:\Graal
-head=era_head-iddkngaapprov.gif
-body=shotzo-body.png
-attr1=era_hatshop-froghood.png
-colors=skin:#000000,coat:#000000,belt:#121212,sleeves:#1E1E1E,shoes:#000000

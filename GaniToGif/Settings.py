@@ -15,9 +15,7 @@ class Settings:
         self.default_head = "head0.png"
         self.default_body = "body1.png"
         self.default_shield = "shield1.png"
-        self.unprogrammed = []
         self.parse_settings_data( settings_data )
-
         
     
      
@@ -57,16 +55,12 @@ class Settings:
             two_tuple = switch_map.get( tokens[0] )
             
             if two_tuple is None: 
-                self.unprogrammed.append( str( two_tuple) )
+                
                 continue
             
             function , attr_name = two_tuple
             function( attr_name , tokens[1] )
             #
-            
-    def log_setting( tuple ):
-        with open( "settings_log.txt" , "w" ) as settings_file:
-                    file.append( str(tuple) )
 
     def __str__( self ):
         string =  self.__class__.__name__ + "\n(\n"
