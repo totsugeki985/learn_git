@@ -51,7 +51,7 @@ class Animation:
         for still in self.stills:
             still.adjust_coords( self.offset )
             still_imgs.append( still.create_image( animation_size ) )
-            still.create_image( animation_size ).save( "stills\\" + str(frame) + ".png" )
+            #still.create_image( animation_size ).save( "stills\\" + str(frame) + ".png" )
             frame += 1
             
         #for still_img in still_imgs:

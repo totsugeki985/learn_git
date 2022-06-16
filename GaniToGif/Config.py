@@ -3,6 +3,7 @@ import re
 
 class Config:
 
+    #for command line
     def __init__( self , config_filepath ):
         #default assets to be used, overwritten after parsing config if sprite_type present
         self.default_colors = \
@@ -19,6 +20,26 @@ class Config:
         
         self.parse_config( config_filepath ) #overwrites sel;f.graal_folder if specified in config.txt, else its in the User's root folder   
         
+        self.set_folderpaths()
+        
+    #for gui
+    def __init__( self , graal_folder , colors , head , body , attr1 ):
+        self.default_colors = \
+        {
+            "skin" : "#FFAD6B" ,  #orange
+            "coat" : "#FFFFFF" , #white
+            "belt" : "#0000FF" , #blue
+            "shoes" :  "#CE1829"  , #fire engine red
+            "sleeves" : "#FF0000" #red
+        }
+        self.graal_folder = graal_folder
+        self.colors = colors
+        self.head = head
+        self.body = body
+        self.attr1 = attr1
+        self.set_folderpaths()
+        
+    def set_folderpaths( self ):
         self.levels_folder = join( self.graal_folder , "levels" )
         self.images_folder = join( self.levels_folder , "images" )
         self.bodies_folder = join( self.levels_folder , "bodies" )
@@ -27,7 +48,6 @@ class Config:
         self.hats_folder = join( self.levels_folder , "hats" )
         self.emoticons_folder = join( self.levels_folder , "emoticons" )
         self.downloads_folder = join( self.levels_folder , "downloads" )
-        
         
     def parse_config(self , config_filepath):
         parse_map = \
